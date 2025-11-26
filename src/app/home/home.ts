@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef, inject } from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {Task} from '../task/task';
 
@@ -12,5 +12,12 @@ import {Task} from '../task/task';
   styleUrl: './home.css',
 })
 export class Home {
-
+  count = 0;
+  private cdr = inject(ChangeDetectorRef);
+   ngOnInit() {
+    setInterval(() => {
+      this.count++;
+      this.cdr.markForCheck();
+    }, 1000);
+  }
 }

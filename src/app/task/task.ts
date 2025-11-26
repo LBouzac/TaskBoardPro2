@@ -15,9 +15,6 @@ export class Task {
   constructor(protected taskService: TaskService) {
     this.task$ = this.taskService.getTasks();
   }
-  ngOnInit() {
-    console.log(this.task$);
-  }
 
   protected readonly TaskService = TaskService;
 }
