@@ -1,20 +1,28 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { Task as TaskService} from '../core/service/task';
 import {AsyncPipe} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-task',
   imports: [
-    AsyncPipe
+    AsyncPipe,
+    FormsModule
   ],
   templateUrl: './task.html',
   styleUrl: './task.css',
 })
 export class Task {
   task$!: ReturnType<TaskService['getTasks']>;
+  addTask$ = inject(TaskService);
+
   constructor(protected taskService: TaskService) {
     this.task$ = this.taskService.getTasks();
   }
 
+  addTask(title: string) {
+    this.addTask$.addTask(title);
+  }
   protected readonly TaskService = TaskService;
+
 }

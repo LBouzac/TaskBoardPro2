@@ -16,13 +16,17 @@ export class Task {
     // Simulate an HTTP request with a delay
     return of(this.tasks).pipe(delay(500));
   }
-  //
-  // addTask(title: string) {
-  //   const newTask = { id: this.tasks.length + 1, title, completed: false };
-  //   this.tasks.push(newTask);
-  //   return of(newTask).pipe(delay(500));
-  // }
-  //
+
+  addTask(title: string) {
+    const newTask = {
+      id: this.tasks.length + 1,
+      title,
+      completed: false,
+    };
+    this.tasks.push(newTask);
+    return of(newTask).pipe(delay(500));
+  }
+
   // completeTask(id: number) {
   //   const task = this.tasks.find(t => t.id === id);
   //   if (task) {

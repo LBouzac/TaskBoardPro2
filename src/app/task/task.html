@@ -13,3 +13,8 @@
   <p>Aucune tâche disponible.</p>
 }
 
+<h2>Ajouter une tache</h2>
+
+<input #taskTitle type="text" placeholder="Titre de la tâche" />
+<button (click)="addTask('#taskTitle')">Ajouter une tâche</button>
+
