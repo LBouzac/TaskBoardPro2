@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import {BehaviorSubject, of} from 'rxjs';
 import { delay } from 'rxjs/operators';
+
+export interface TaskItem {
+  id: number;
+  title: string;
+  completed: boolean;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -12,27 +18,22 @@ export class Task {
     { id: 3, title: 'Faire les courses', completed: false },
   ];
 
+  private TaskSubject = new BehaviorSubject<TaskItem[]>(this.tasks);
+
   getTasks() {
     // Simulate an HTTP request with a delay
     return of(this.tasks).pipe(delay(500));
   }
 
   addTask(title: string) {
-    const newTask = {
+    const newTask : TaskItem = {
       id: this.tasks.length + 1,
       title,
       completed: false,
     };
     this.tasks.push(newTask);
-    return of(newTask).pipe(delay(500));
+    // this.tasks = [...this.tasks, newTask];
+    this.TaskSubject.next(this.tasks);
   }
-
-  // completeTask(id: number) {
-  //   const task = this.tasks.find(t => t.id === id);
-  //   if (task) {
-  //     task.completed = true;
-  //   }
-  //   return of(task).pipe(delay(500));
-  // }
 
 }

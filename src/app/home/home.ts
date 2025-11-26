@@ -5,8 +5,7 @@ import {Task} from '../task/task';
 @Component({
   selector: 'app-home',
   imports: [
-    RouterLink,
-    Task
+    RouterLink
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',
