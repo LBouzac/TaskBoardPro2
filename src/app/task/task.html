@@ -16,5 +16,5 @@
 <h2>Ajouter une tache</h2>
 
 <input #taskTitle type="text" placeholder="Titre de la tâche" />
-<button (click)="addTask('#taskTitle')">Ajouter une tâche</button>
+<button (click)="addTask(taskTitle.value); taskTitle.value = ''">Ajouter une tâche</button>
 
