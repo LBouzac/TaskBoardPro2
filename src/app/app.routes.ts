@@ -9,6 +9,6 @@ export const routes: Routes = [
   },
   {
     path: 'tasks',
-    loadChildren: () => import('./features/tasks-page/routes').then(m => m.TASKS_ROUTES)
+    loadChildren: () => import('./features/tasks/tasks-page/routes').then(m => m.TASKS_ROUTES)
   },
 ];

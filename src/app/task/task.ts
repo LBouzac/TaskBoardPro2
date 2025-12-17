@@ -15,6 +15,7 @@ import {FormsModule} from '@angular/forms';
 export class Task {
   task$!: ReturnType<TaskService['getTasks']>;
   addTask$ = inject(TaskService);
+  title: string | undefined;
 
   constructor(protected taskService: TaskService) {
     this.task$ = this.taskService.getTasks();
