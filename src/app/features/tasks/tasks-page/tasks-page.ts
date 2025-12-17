@@ -26,6 +26,15 @@ export class TasksPage {
     this.addTask$.addTask(title);
   }
 
+  deleteTask(id: number) {
+    this.addTask$.deleteTask(id);
+  }
+
+  terminateTask(id: number) {
+    this.addTask$.terminateTask(id);
+  }
+
+
   @ViewChild('highlightContainer', { read: ViewContainerRef })
   container!: ViewContainerRef;
 

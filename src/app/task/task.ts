@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import { Task as TaskService} from '../core/service/task';
+import {Task as TaskService, TaskItem} from '../core/service/task';
 import {AsyncPipe} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
@@ -17,6 +17,7 @@ export class Task {
   addTask$ = inject(TaskService);
   title: string | undefined;
 
+
   constructor(protected taskService: TaskService) {
     this.task$ = this.taskService.getTasks();
   }
@@ -24,6 +25,8 @@ export class Task {
   addTask(title: string) {
     this.addTask$.addTask(title);
   }
-  protected readonly TaskService = TaskService;
 
+  clearTasks(): void {
+    this.taskService.clearTasks();
+  }
 }
