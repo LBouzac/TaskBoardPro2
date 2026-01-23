@@ -1,40 +1,55 @@
-<h2>Liste des tâches</h2>
-@if (task$ | async; as tasks) {
-  <ul>
-    @for (t of tasks; track t.id) {
-      <li>
-        {{ t.title }}
-        <button type="button" (click)="highlight(t)">
-          Mettre en avant
-        </button>
-        <button type="button" (click)="terminateTask(t.id)" >
-          @if (!t.completed) {
-            ⏳
-          } @else {
-            ✅
-          }
-        </button>
-        <button type="button" (click)="deleteTask(t.id)">
-          ❌
-        </button>
-      </li>
-    }
-  </ul>
-} @else {
-  <p>Chargement des tâches...</p>
-}
+<div class="tasks-wrapper">
+  <div class="tasks-container">
+    <h1>Tâches</h1>
 
-<hr />
+    <section class="tasks-section">
+      @if (task$ | async; as tasks) {
+        @if (tasks.length > 0) {
+          <ul class="tasks-list">
+            @for (t of tasks; track t.id) {
+              <li class="task-item" [class.completed]="t.completed">
+                <span class="task-title">{{ t.title }}</span>
+                <div class="task-actions">
+                  <button type="button" (click)="highlight(t)" class="btn-highlight" title="Mettre en avant">
+                    ⭐
+                  </button>
+                  <button type="button" (click)="terminateTask(t.id)" class="btn-complete" title="Marquer comme complété">
+                    @if (!t.completed) {
+                      ○
+                    } @else {
+                      ✓
+                    }
+                  </button>
+                  <button type="button" (click)="deleteTask(t.id)" class="btn-delete" title="Supprimer">
+                    ✕
+                  </button>
+                </div>
+              </li>
+            }
+          </ul>
+        } @else {
+          <p class="empty-state">Aucune tâche. Commencez par en créer une.</p>
+        }
+      } @else {
+        <p class="loading">Chargement...</p>
+      }
+    </section>
 
-<h3>Actions</h3>
-<input
-  #taskTitleInput
-  type="text"
-  placeholder="Titre de la tâche"
-  (keyup.enter)="addTask(taskTitleInput.value); taskTitleInput.value = ''"
-/>
-<button (click)="addTask(taskTitleInput.value); taskTitleInput.value = ''"> Ajouter une tâche</button>
-<!--<button (click)="addTask('New task')">Ajouter une tâche</button>-->
+    <section class="add-task-section">
+      <div class="input-group">
+        <input
+          #taskTitleInput
+          type="text"
+          placeholder="Ajouter une nouvelle tâche"
+          (keyup.enter)="addTask(taskTitleInput.value); taskTitleInput.value = ''"
+          class="task-input"
+        />
+        <button (click)="addTask(taskTitleInput.value); taskTitleInput.value = ''" class="btn-add">
+          Ajouter
+        </button>
+      </div>
+    </section>
 
-<!-- Zone d'injection du composant dynamique -->
-<div #highlightContainer></div>
+    <div class="highlight-container" #highlightContainer></div>
+  </div>
+</div>

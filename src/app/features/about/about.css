@@ -1,0 +1,148 @@
+:host {
+  display: block;
+}
+
+.about-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 120px 40px;
+  background: linear-gradient(180deg, #ffffff 0%, #f9f9fb 100%);
+}
+
+.about-container h1 {
+  font-size: 3.8em;
+  font-weight: 800;
+  color: #000;
+  margin: 0 0 48px 0;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.hero-section {
+  margin-bottom: 80px;
+  padding: 32px 40px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.lead-text {
+  font-size: 1.4em;
+  line-height: 1.7;
+  color: #333;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.infobox {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 80px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.infobox h2 {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.01em;
+}
+
+.infobox-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.infobox-item:last-child {
+  border-bottom: none;
+}
+
+.infobox-label {
+  color: #666;
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+.infobox-value {
+  color: #000;
+  font-weight: 700;
+  font-size: 0.95em;
+}
+
+.content-section {
+  margin-bottom: 80px;
+}
+
+.content-section h2 {
+  font-size: 2em;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
+}
+
+.content-section p {
+  font-size: 1.05em;
+  line-height: 1.8;
+  color: #666;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: -0.003em;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 80px 24px;
+  }
+
+  .about-container h1 {
+    font-size: 2.6em;
+    margin-bottom: 40px;
+  }
+
+  .hero-section {
+    margin-bottom: 60px;
+    padding: 24px 28px;
+  }
+
+  .lead-text {
+    font-size: 1.2em;
+  }
+
+  .content-section h2 {
+    font-size: 1.5em;
+  }
+
+  .infobox {
+    padding: 28px;
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 60px 16px;
+  }
+
+  .about-container h1 {
+    font-size: 2em;
+  }
+
+  .hero-section {
+    padding: 20px 20px;
+  }
+
+  .infobox-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
